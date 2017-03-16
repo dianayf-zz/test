@@ -1,0 +1,17 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ".:/exam"
+    command: bundle exec rails s -p 5000 -b "0.0.0.0"
+    depends_on:
+      - postgres
+    links:
+      - postgres:postgres
+  postgres:
+    image: postgres:9.4
+    volumes:
+      - ./.data/postgres:/var/lib/postgresql/data

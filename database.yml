@@ -1,0 +1,13 @@
+default: &default
+ adapter: postgresql
+ username: postgres
+ host: postgres
+#  host: localhost
+
+development:
+ <<: *default
+ database: test_development
+
+test:
+ <<: *default
+ database: test_test
